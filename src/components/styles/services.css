@@ -1,0 +1,115 @@
+/* ================= SERVIÇOS ================= */
+.servicos {
+  position: relative;
+  padding: var(--section-padding);
+  text-align: center;
+  background: var(--dark);
+}
+
+.servicos h2,
+.servicos-container {
+  position: relative;
+  z-index: 1;
+}
+
+.servicos::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 37, 64, 0.85);
+}
+
+/* CONTAINER */
+.servicos-container {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.servico-card {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: 0.4s;
+  opacity: 1;
+  transform: translateY(40px) scale(0.95);
+}
+
+.servico-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.servico-card:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 37, 64, 0.9), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  color: var(--light);
+  transition: 0.3s;
+}
+
+.servico-card:hover .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(10, 37, 64, 1),
+    rgba(10, 37, 64, 0.3)
+  );
+}
+
+.overlay h3 {
+  margin-bottom: 10px;
+}
+
+.overlay p {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.tag {
+  font-size: 12px;
+  background: rgba(0, 200, 150, 0.2);
+  color: var(--primary);
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+.servico-card:hover .btn-servico {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .servico-card {
+    width: 100%;
+    height: 300px;
+  }
+
+  .overlay p {
+    font-size: 0.85rem;
+  }
+
+  .btn-servico {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}

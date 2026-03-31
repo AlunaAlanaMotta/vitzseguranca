@@ -1,0 +1,104 @@
+/* ================= MISSÃO VISÃO VALORES ================= */
+.mvv {
+  position: relative;
+  padding: var(--section-padding);
+  text-align: center;
+  background:
+    linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)),
+    url("images/missao.png");
+  overflow: hidden;
+}
+
+/* FUNDO GLOW */
+.mvv::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    rgba(0, 200, 150, 0.08),
+    transparent 60%
+  );
+
+  pointer-events: none;
+}
+
+/* CONTAINER */
+.mvv-container {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+/* CARD */
+.mvv-card {
+  width: 300px;
+  padding: 35px 30px;
+  border-radius: var(--radius);
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+
+  color: var(--light);
+  text-align: left;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.4s;
+}
+
+/* LINHA LATERAL */
+.mvv-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 4px;
+
+  background: linear-gradient(to bottom, var(--primary), transparent);
+}
+
+/* HOVER */
+.mvv-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ÍCONE */
+.mvv-card i {
+  font-size: 32px;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+/* TÍTULO */
+.mvv-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* TEXTO */
+.mvv-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--gray);
+}
+
+@media (max-width: 768px) {
+  .mvv-container {
+    gap: 20px;
+  }
+
+  .mvv-card {
+    padding: 25px 20px;
+    text-align: center;
+  }
+}

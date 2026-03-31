@@ -1,0 +1,61 @@
+/* ================= HERO ================= */
+.hero {
+  height: 100vh;
+  background:
+    linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)),
+    url("images/fundo.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero p {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  color: #d1d5db;
+}
+
+.hero-content {
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 120px 20px 80px;
+    background-attachment: scroll;
+  }
+
+  .hero-content {
+    padding: 0 10px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

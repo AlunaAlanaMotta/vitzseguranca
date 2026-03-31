@@ -1,0 +1,263 @@
+/* ================= CONTATO ================= */
+.contato {
+  background: var(--dark);
+  color: var(--light);
+  padding: var(--section-padding);
+  text-align: center;
+}
+
+.contato-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 50px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.contato p {
+  margin-bottom: 40px;
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+.contato-form {
+  max-width: 900px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.contato-form:hover {
+  box-shadow: var(--shadow-soft);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-grid textarea {
+  grid-column: span 3;
+  min-height: 130px;
+  resize: none;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--border);
+  color: var(--light);
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.form-grid input::placeholder,
+.form-grid textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border: 1px solid var(--primary);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 12px rgba(0, 200, 150, 0.4);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group i {
+  position: absolute;
+  left: 12px;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 14px 14px 14px 40px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--light);
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.input-group label {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray);
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label,
+.input-group textarea:focus + label,
+.input-group textarea:valid + label {
+  top: -8px;
+  left: 35px;
+  font-size: 0.75rem;
+  color: var(--primary);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border: 1px solid var(--primary);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 12px rgba(0, 200, 150, 0.4);
+}
+
+.input-group:focus-within i {
+  color: var(--primary);
+}
+
+.input-group.full {
+  grid-column: span 3;
+}
+
+/* ================= POPUP ================= */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 37, 64, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+  z-index: 9999;
+}
+
+.popup.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.popup-content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: var(--radius);
+  text-align: center;
+  max-width: 320px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-glow);
+  animation: popupUp 0.5s ease;
+}
+
+.popup-content h3 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.popup-content p {
+  color: var(--gray);
+}
+
+.popup-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background: var(--primary);
+  color: var(--light);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-content button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ================= CONTATO INFO ================= */
+.contato-info {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contato-info .btn {
+  background: var(--primary);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.contato-info .btn:hover {
+  background: var(--primary-dark);
+  transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .contato-form {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px;
+  }
+
+  .form-grid > * {
+    grid-column: span 1 !important;
+  }
+
+  .input-group.full {
+    grid-column: span 1;
+  }
+
+  .btn-enviar {
+    padding: 14px;
+  }
+  .input-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .input-group i {
+    display: none; /* 🔥 remove o ícone no mobile */
+  }
+
+  .input-group input,
+  .input-group textarea {
+    padding: 14px;
+  }
+
+  .input-group label {
+    left: 14px;
+  }
+  .form-grid input,
+  .form-grid textarea {
+    width: 100%;
+  }
+}

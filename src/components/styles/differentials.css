@@ -1,0 +1,126 @@
+/* ================= DIFERENCIAIS ================= */
+.diferenciais {
+  position: relative;
+  overflow: hidden;
+  padding: var(--section-padding);
+}
+
+/* VÍDEO */
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+.diferenciais::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 37, 64, 0.85);
+  z-index: -1;
+}
+
+/* CONTAINER */
+.diferenciais-wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.diferenciais-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* TÍTULO */
+.diferenciais-content h2 {
+  color: var(--light);
+  margin-bottom: 40px;
+}
+
+/* CARD */
+.diferencial-item {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: var(--radius);
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: var(--light);
+  transition: 0.4s;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* BORDA GRADIENTE */
+.diferencial-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  padding: 1.5px;
+
+  background: linear-gradient(120deg, transparent, var(--primary), transparent);
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.diferencial-item:hover::before {
+  opacity: 1;
+}
+
+/* HOVER */
+.diferencial-item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ÍCONE */
+.diferencial-item i {
+  font-size: 30px;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+/* TEXTO */
+.diferencial-item h3 {
+  margin-bottom: 5px;
+  color: var(--light);
+}
+
+.diferencial-item p {
+  font-size: 0.95rem;
+  color: var(--gray);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .bg-video {
+    display: none;
+  }
+
+  .diferenciais {
+    background: linear-gradient(rgba(10, 37, 64, 0.95), rgba(10, 37, 64, 0.95));
+  }
+}
