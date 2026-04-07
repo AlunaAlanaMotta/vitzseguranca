@@ -1,48 +1,41 @@
-import { useState, useEffect } from "react";
 import "./styles/navbar.css";
+import useNavbarScroll from "../hooks/useNavbarScroll";
+import useMenu from "../hooks/useMenu";
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    function handleScroll() {
-      setScrolled(window.scrollY > 50);
-    }
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { menuOpen, toggleMenu, closeMenu } = useMenu();
+  const scrolled = useNavbarScroll();
 
   return (
     <>
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <img src="/images/logo_vitz-2.png" className="logo" />
 
-        <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="menu-toggle" onClick={toggleMenu}>
           {menuOpen ? "✖" : "☰"}
         </div>
 
         <ul className={`menu ${menuOpen ? "active" : ""}`}>
           <li>
-            <a href="#sobre">Sobre</a>
+            {" "}
+            <a href="#sobre" onClick={closeMenu}>
+              Sobre
+            </a>{" "}
           </li>
           <li>
-            <a href="#servicos">Serviços</a>
+            <a href="#servicos" onClick={closeMenu}>
+              Serviços
+            </a>
           </li>
           <li>
-            <a href="#contato">Contato</a>
+            <a href="#contato" onClick={closeMenu}>
+              Contato
+            </a>
           </li>
         </ul>
       </nav>
 
-      {menuOpen && (
-        <div
-          className="menu-overlay active"
-          onClick={() => setMenuOpen(false)}
-        />
-      )}
+      {menuOpen && <div className="menu-overlay active" onClick={closeMenu} />}
     </>
   );
 }

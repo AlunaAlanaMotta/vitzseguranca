@@ -1,24 +1,32 @@
+import useScrollVisibility from "../hooks/useScrollVisibility";
 import "./styles/hero.css";
 
 function Hero() {
+  const isAtTop = useScrollVisibility(50);
+
   return (
-    <header className="hero">
+    <section className="hero" id="home">
+      <div className="hero-overlay" />
+
       <div className="hero-content reveal">
-        <h1>
-          Proteja sua empresa 24h com monitoramento inteligente e controle total
-          de acesso
-        </h1>
+        <h1>Segurança inteligente para proteger o que realmente importa</h1>
 
         <p>
-          Reduza riscos, evite falhas e tenha total controle do seu ambiente com
-          tecnologia e equipes especializadas.
+          Mais segurança, menos riscos e total controle do seu ambiente com
+          tecnologia avançada e monitoramento 24h.
         </p>
 
-        <a href="https://wa.me/5541995502824" className="btn" target="_blank">
-          Solicitar orçamento no WhatsApp
+        <a
+          href="https://wa.me/5541995502824"
+          className="btn-hero"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Solicitar orçamento
         </a>
       </div>
-    </header>
+      <div className={`scroll-indicator ${!isAtTop ? "hide" : ""}`} />
+    </section>
   );
 }
 

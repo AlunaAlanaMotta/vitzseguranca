@@ -6,6 +6,8 @@
   background:
     linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)),
     url("images/missao.png");
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 
@@ -26,13 +28,10 @@
 
 /* CONTAINER */
 .mvv-container {
-  position: relative;
-  z-index: 2;
-
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
 /* CARD */
@@ -46,7 +45,7 @@
   border: 1px solid var(--border);
 
   color: var(--light);
-  text-align: left;
+  text-align: center;
 
   position: relative;
   overflow: hidden;
@@ -66,9 +65,9 @@
 
 /* HOVER */
 .mvv-card:hover {
-  transform: translateY(-10px);
   background: rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow-glow);
+  transform: scale(1.1);
 }
 
 /* ÍCONE */
@@ -76,6 +75,7 @@
   font-size: 32px;
   color: var(--primary);
   margin-bottom: 15px;
+  transition: 0.3s;
 }
 
 /* TÍTULO */
@@ -94,7 +94,7 @@
 
 @media (max-width: 768px) {
   .mvv-container {
-    gap: 20px;
+    grid-template-columns: 1fr;
   }
 
   .mvv-card {

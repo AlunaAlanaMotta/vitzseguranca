@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function useReveal() {
+function useScrollReveal() {
   useEffect(() => {
     function handleScroll() {
       const elements = document.querySelectorAll(".reveal");
@@ -22,4 +22,4 @@ function useReveal() {
   }, []);
 }
 
-export default useReveal;
+export default useScrollReveal;

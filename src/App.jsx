@@ -6,11 +6,11 @@ import MVV from "./components/Mvv";
 import Navbar from "./components/Navbar";
 import Services from "./components/Services";
 import Footer from "./components/Footer";
-import useReveal from "./hooks/useRevel";
 import WhatsAppButton from "./components/WhatsAppButton";
+import useScrollReveal from "./hooks/useScrollReveal";
 
 function App() {
-  useReveal();
+  useScrollReveal();
   return (
     <>
       <Navbar />

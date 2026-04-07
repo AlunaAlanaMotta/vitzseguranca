@@ -1,136 +1,158 @@
 /* ================= SOBRE ================= */
 .sobre {
   position: relative;
-  padding: var(--section-padding);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: var(--dark);
   overflow: hidden;
+  background: linear-gradient(120deg, #0a2540, #0a2540, #0d3b66, #0a2540);
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
+  padding: var(--space-2xl) 0;
 }
 
-.sobre::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(0, 200, 150, 0.12),
-    transparent 60%
-  );
-
-  pointer-events: none;
-
-  animation: glowMove 8s ease-in-out infinite alternate;
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-/* OVERLAY */
-.sobre-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 37, 64, 0.75);
-  pointer-events: none;
+/* container principal */
+.sobre-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
 }
 
-/* CONTEÚDO */
-.sobre-content {
-  position: relative;
-  z-index: 2;
+.sobre-container p {
+  opacity: 0.8;
+}
 
-  max-width: 800px;
-  text-align: center;
-
-  padding: 70px 60px;
-  border-radius: 20px;
-
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-
+/* TEXTO */
+.sobre-text {
   color: var(--light);
 }
 
-/* SUBTÍTULO */
 .subtitulo {
-  font-size: 1.3rem;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
   color: var(--primary);
-  margin-bottom: 25px;
-  line-height: 1.6;
 }
 
-/* TEXTOS */
-.sobre-content p:not(.subtitulo) {
-  font-size: 1.1rem;
-  line-height: 1.8;
+.sobre-text p {
   margin-bottom: 15px;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
 }
 
-/* DESTAQUE */
 .destaque {
-  font-size: 1.2rem;
+  margin-top: 20px;
+  padding-left: 20px;
+  border-left: 4px solid var(--primary);
   font-weight: 600;
-  margin-top: 10px;
-  color: var(--light);
-  border-left: 3px solid var(--primary);
-  padding-left: 15px;
+  font-size: 1.1rem;
+}
+
+/* IMAGEM */
+.sobre-img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.sobre-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+}
+
+.btn-sobre {
+  background: linear-gradient(135deg, #00c896, #00a87a);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+  width: fit-content;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.btn-sobre:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* CARDS */
 .sobre-cards {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   margin-top: 30px;
-  flex-wrap: wrap;
 }
 
 .card-mini {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
+  transition: 0.3s;
 }
 
+.card-mini:hover {
+  transform: translateY(-5px);
+}
+
+/* efeito glow */
 .card-mini::after {
   content: "";
   position: absolute;
   width: 200px;
   height: 200px;
-
   background: radial-gradient(circle, rgba(0, 200, 150, 0.3), transparent 60%);
-
   top: var(--y);
   left: var(--x);
-
   transform: translate(-50%, -50%);
-  pointer-events: none;
-
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: 0.3s;
 }
 
 .card-mini:hover::after {
   opacity: 1;
 }
 
-@keyframes glowMove {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(40px, 40px);
-  }
-}
-
-/* RESPONSIVO */
+/*========== RESPONSIVO ==========*/
 @media (max-width: 768px) {
-  .sobre-content {
-    padding: 40px 25px;
+  .sobre-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    flex-direction: column;
   }
 
-  .subtitulo {
-    font-size: 1.1rem;
+  .sobre-img img {
+    max-width: 100%;
+  }
+
+  .sobre-cards {
+    grid-template-columns: 1fr;
   }
 }
