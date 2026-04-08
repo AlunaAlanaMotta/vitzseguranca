@@ -1,75 +1,57 @@
 import "./styles/services.css";
 
 function Services() {
+  const services = [
+    {
+      img: "/images/portaria.png",
+      tag: "Segurança",
+      title: "Portaria e Controle de Acesso",
+      desc: "Controle total de acesso com segurança profissional e redução de riscos no seu patrimônio.",
+    },
+    {
+      img: "/images/central.png",
+      tag: "Monitoramento",
+      title: "Monitoramento 24h",
+      desc: "Monitoramento 24h com resposta rápida para prevenir incidentes antes que aconteçam.",
+    },
+    {
+      img: "/images/zeladoria.png",
+      tag: "Zeladoria",
+      title: "Serviços de Facilities",
+      desc: "Gestão completa do seu espaço com eficiência, organização e redução de custos.",
+    },
+  ];
+
   return (
-    <section id="servicos" className="servicos reveal">
-      <h2 className="titulo">Nossos Serviços</h2>
+    <section id="servicos" className="servicos">
+      <div className="container">
+        <h2 className="titulo reveal">Nossos Serviços</h2>
 
-      <div className="servicos-container">
-        {/* CARD 1 */}
-        <div className="servico-card">
-          <img src="/images/portaria.png" alt="Portaria" />
-
-          <div className="overlay">
-            <span className="tag">Segurança</span>
-            <h3>Portaria e Controle de Acesso</h3>
-            <p>
-              Controle total de acesso com segurança profissional e redução de
-              riscos no seu patrimônio.
-            </p>
-
-            <a
-              href="https://wa.me/5541995502824"
-              className="btn-servico"
-              target="_blank"
+        <div className="servicos-container">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="servico-card reveal"
+              style={{ "--delay": `${index * 0.2}s` }}
             >
-              Falar com especialista
-            </a>
-          </div>
-        </div>
+              <img src={service.img} alt={service.title} />
 
-        {/* CARD 2 */}
-        <div className="servico-card">
-          <img src="/images/central.png" alt="Monitoramento" />
+              <div className="overlay">
+                <span className="tag">{service.tag}</span>
+                <h3>{service.title}</h3>
+                <p>{service.desc}</p>
 
-          <div className="overlay">
-            <span className="tag">Monitoramento</span>
-            <h3>Monitoramento 24h</h3>
-            <p>
-              Monitoramento 24h com resposta rápida para prevenir incidentes
-              antes que aconteçam.
-            </p>
-
-            <a
-              href="https://wa.me/5541995502824"
-              className="btn-servico"
-              target="_blank"
-            >
-              Falar com especialista
-            </a>
-          </div>
-        </div>
-
-        {/* CARD 3 */}
-        <div className="servico-card">
-          <img src="/images/zeladoria.png" alt="Facilities" />
-
-          <div className="overlay">
-            <span className="tag">Zeladoria</span>
-            <h3>Serviços de Facilities</h3>
-            <p>
-              Gestão completa do seu espaço com eficiência, organização e
-              redução de custos.
-            </p>
-
-            <a
-              href="https://wa.me/5541995502824"
-              className="btn-servico"
-              target="_blank"
-            >
-              Falar com especialista
-            </a>
-          </div>
+                <a
+                  href="https://wa.me/5541995502824"
+                  className="btn-servico"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Falar com especialista
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

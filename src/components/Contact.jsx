@@ -5,6 +5,12 @@ function Contact() {
   const [loading, setLoading] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
+  const fields = [
+    { type: "text", name: "nome", placeholder: "Seu nome", required: true },
+    { type: "email", name: "email", placeholder: "Seu email", required: true },
+    { type: "text", name: "assunto", placeholder: "Assunto" },
+  ];
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -28,52 +34,59 @@ function Contact() {
   };
 
   return (
-    <section id="contato" className="contato reveal">
-      <h2 className="titulo">Fale Conosco</h2>
+    <section id="contato" className="contato">
+      <div className="container">
+        <h2 className="titulo reveal">Fale Conosco</h2>
 
-      <p>
-        Solicite um orçamento agora e descubra como podemos proteger seu
-        patrimônio.
-      </p>
+        <p className="reveal">
+          Solicite um orçamento agora e descubra como podemos proteger seu
+          patrimônio.
+        </p>
 
-      <div className="contato-wrapper">
-        {/* FORM */}
-        <form
-          className="contato-form"
-          action="https://formsubmit.co/grupovitz@gmail.com"
-          method="POST"
-          onSubmit={handleSubmit}
-        >
-          <div className="form-grid">
-            <input type="text" name="nome" placeholder="Seu nome" required />
-            <input type="email" name="email" placeholder="Seu email" required />
-            <input type="text" name="assunto" placeholder="Assunto" />
+        <div className="contato-wrapper">
+          {/* FORM */}
+          <form
+            className="contato-form reveal"
+            action="https://formsubmit.co/mottaalana0@gmail.com"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <div className="form-grid">
+              {fields.map((field, index) => (
+                <input key={index} {...field} />
+              ))}
 
-            <textarea
-              name="mensagem"
-              placeholder="Sua mensagem"
-              required
-            ></textarea>
+              <textarea
+                name="mensagem"
+                placeholder="Sua mensagem"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" className="btn-enviar">
+              {loading ? <span className="loader"></span> : "Enviar mensagem"}
+            </button>
+          </form>
+
+          {/* CONTATO */}
+          <div className="contato-info reveal">
+            <p>Ou fale direto no WhatsApp:</p>
+
+            <a
+              href="https://wa.me/5541995502824"
+              className="btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Falar no WhatsApp
+            </a>
           </div>
-
-          <button type="submit" className="btn-enviar">
-            {loading ? "Enviando..." : "Enviar mensagem"}
-          </button>
-        </form>
-
-        {/* CONTATO RÁPIDO */}
-        <div className="contato-info">
-          <p>Ou fale direto no WhatsApp:</p>
-
-          <a href="https://wa.me/5541995502824" className="btn" target="_blank">
-            Falar no WhatsApp
-          </a>
         </div>
       </div>
 
       {/* POPUP */}
       {showPopup && (
-        <div className="popup">
+        <div className="popup ativo">
           <div className="popup-content">
             <h3>Mensagem enviada! 🎉</h3>
             <p>Entraremos em contato em breve.</p>

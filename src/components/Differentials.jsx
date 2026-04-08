@@ -1,48 +1,52 @@
 import "./styles/differentials.css";
 
 function Differentials() {
+  const items = [
+    {
+      icon: "fas fa-shield-alt",
+      title: "Equipe altamente treinada",
+      text: "Profissionais altamente treinados para garantir segurança real no seu dia a dia.",
+    },
+    {
+      icon: "fas fa-microchip",
+      title: "Tecnologia de ponta",
+      text: "Tecnologia avançada para monitoramento inteligente e resposta rápida.",
+    },
+    {
+      icon: "fas fa-clock",
+      title: "Monitoramento 24h",
+      text: "Proteção contínua com monitoramento 24h sem falhas.",
+    },
+    {
+      icon: "fas fa-users",
+      title: "Atendimento personalizado",
+      text: "Soluções sob medida para o seu negócio.",
+    },
+  ];
+
   return (
-    <section className="diferenciais reveal">
+    <section className="diferenciais">
       {/* VÍDEO */}
       <video className="bg-video" autoPlay muted loop playsInline>
         <source src="/images/central.mp4" type="video/mp4" />
       </video>
 
-      {/* CONTEÚDO */}
-      <div className="diferenciais-wrapper">
+      <div className="container">
         <div className="diferenciais-content">
-          <h2 className="titulo">Nossos Diferenciais</h2>
+          <h2 className="titulo reveal">Nossos Diferenciais</h2>
 
           <div className="diferenciais-container">
-            <div className="diferencial-item">
-              <i className="fas fa-shield-alt"></i>
-              <h3>Equipe altamente treinada</h3>
-              <p>
-                Profissionais altamente treinados para garantir segurança real
-                no seu dia a dia.
-              </p>
-            </div>
-
-            <div className="diferencial-item">
-              <i className="fas fa-microchip"></i>
-              <h3>Tecnologia de ponta</h3>
-              <p>
-                Tecnologia avançada para monitoramento inteligente e resposta
-                rápida.
-              </p>
-            </div>
-
-            <div className="diferencial-item">
-              <i className="fas fa-clock"></i>
-              <h3>Monitoramento 24h</h3>
-              <p>Proteção contínua com monitoramento 24h sem falhas.</p>
-            </div>
-
-            <div className="diferencial-item">
-              <i className="fas fa-users"></i>
-              <h3>Atendimento personalizado</h3>
-              <p>Soluções sob medida para o seu negócio.</p>
-            </div>
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="diferencial-item reveal"
+                style={{ "--delay": `${index * 0.2}s` }}
+              >
+                <i className={item.icon}></i>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
