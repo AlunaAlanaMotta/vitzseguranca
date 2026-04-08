@@ -245,6 +245,11 @@ body {
   border-radius: 2px;
 }
 
+.sobre .titulo::after,
+.diferenciais-content h2::after {
+  margin: 10px 0 0 0;
+}
+
 h2 {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -268,7 +273,12 @@ h2 {
   }
 
   .titulo {
+    display: block;
     text-align: center;
     font-size: 2rem;
+  }
+  .sobre .titulo::after,
+  .diferenciais-content h2::after {
+    margin: 10px auto 0;
   }
 }

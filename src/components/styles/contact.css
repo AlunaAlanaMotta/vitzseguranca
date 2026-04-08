@@ -12,7 +12,7 @@
   font-size: 1.1rem;
 }
 
-/* WRAPPER */
+/* ================= WRAPPER ================= */
 .contato-wrapper {
   display: flex;
   justify-content: center;
@@ -23,7 +23,7 @@
   margin: auto;
 }
 
-/* FORM */
+/* ================= FORM ================= */
 .contato-form {
   width: 100%;
   max-width: 600px;
@@ -40,7 +40,7 @@
   box-shadow: var(--shadow-soft);
 }
 
-/* GRID */
+/* ================= GRID ================= */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -48,13 +48,18 @@
   margin-bottom: 20px;
 }
 
-.form-grid textarea {
-  grid-column: span 3;
-  min-height: 130px;
-  resize: none;
+/* INPUT GROUP */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-/* INPUTS */
+.input-group.full {
+  grid-column: span 3;
+}
+
+/* ================= INPUTS ================= */
 .form-grid input,
 .form-grid textarea {
   width: 100%;
@@ -64,24 +69,49 @@
   background: var(--border);
   color: var(--light);
   font-size: 0.95rem;
-  transition: 0.3s;
+  transition: 0.25s ease;
 }
 
+.form-grid textarea {
+  min-height: 130px;
+  resize: none;
+}
+
+/* placeholder */
 .form-grid input::placeholder,
 .form-grid textarea::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
 
+/* focus */
 .form-grid input:focus,
 .form-grid textarea:focus {
   border: 1px solid var(--primary);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 12px rgba(0, 200, 150, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(0, 200, 150, 0.3);
   outline: none;
 }
 
-/* BOTÃO */
+/* ================= ESTADOS ================= */
+.error {
+  border: 1px solid #ff4d4f !important;
+  box-shadow: 0 0 8px rgba(255, 77, 79, 0.4);
+}
+
+.success {
+  border: 1px solid #00c896 !important;
+}
+
+.error-text {
+  font-size: 0.75rem;
+  color: #ff4d4f;
+  margin-top: 5px;
+  text-align: left;
+}
+
+/* ================= BOTÃO ================= */
 .btn-enviar {
+  position: relative;
   width: 100%;
   padding: 14px;
   border-radius: 10px;
@@ -90,7 +120,12 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-enviar:hover {
@@ -98,15 +133,39 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+.btn-enviar.success {
+  background: #16a34a; /* verde sucesso */
+}
+
+/* TEXTO */
+.btn-text {
+  transition: 0.3s;
+}
+
 /* LOADER */
 .loader {
+  position: absolute;
   width: 18px;
   height: 18px;
   border: 2px solid white;
   border-top: 2px solid transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin: auto;
+  opacity: 0;
+}
+
+/* ESTADO LOADING */
+.btn-enviar.loading {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.btn-enviar.loading .btn-text {
+  opacity: 0;
+}
+
+.btn-enviar.loading .loader {
+  opacity: 1;
 }
 
 @keyframes spin {
@@ -115,18 +174,30 @@
   }
 }
 
-/* CONTATO INFO */
+/* ================= CONTATO INFO ================= */
 .contato-info {
   text-align: center;
   margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .contato-info .btn {
   background: var(--primary);
-  padding: 14px 28px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
   border-radius: 50px;
-  font-weight: bold;
+  font-weight: 600;
   transition: 0.3s;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: auto;
 }
 
 .contato-info .btn:hover {
@@ -134,7 +205,7 @@
   transform: scale(1.05);
 }
 
-/* POPUP */
+/* ================= POPUP ================= */
 .popup {
   position: fixed;
   inset: 0;
@@ -143,9 +214,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   opacity: 0;
   pointer-events: none;
   transition: 0.4s;
+
   z-index: 9999;
 }
 
@@ -161,8 +234,10 @@
   border-radius: var(--radius);
   text-align: center;
   max-width: 320px;
+
   border: 1px solid var(--border);
   box-shadow: var(--shadow-glow);
+
   animation: popupUp 0.4s ease;
 }
 
@@ -203,7 +278,7 @@
   }
 }
 
-/* RESPONSIVO */
+/* ================= RESPONSIVO ================= */
 @media (max-width: 768px) {
   .contato-wrapper {
     flex-direction: column;
@@ -212,16 +287,11 @@
   }
 
   .form-grid {
-    display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .form-grid > * {
-    grid-column: span 1;
-  }
-
-  .form-grid textarea {
+  .input-group.full {
     grid-column: span 1;
   }
 
@@ -230,7 +300,16 @@
     max-width: 100%;
   }
 
-  .btn-enviar {
+  .contato-info {
     width: 100%;
+  }
+
+  .contato-info .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .error-text {
+    font-size: 0.7rem;
   }
 }

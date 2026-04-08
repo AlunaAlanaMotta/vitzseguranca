@@ -1,0 +1,62 @@
+/* ================= SCROLL TO TOP ================= */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 200px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: var(--primary);
+  color: #fff;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+
+  z-index: 9999;
+}
+
+/* visível */
+.scroll-top.show {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+/* hover */
+.scroll-top:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 200, 150, 0.3);
+}
+
+/* clique */
+.scroll-top:active {
+  transform: scale(0.95);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .whatsapp-btn {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .scroll-top {
+    display: none;
+  }
+}

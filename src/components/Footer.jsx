@@ -1,17 +1,51 @@
 import "./styles/footer.css";
 
+const NAVIGATION_LINKS = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#contato", label: "Contato" },
+];
+
+const CONTACT_INFO = [
+  { type: "phone", href: "tel:+5541995502824", label: "(41) 99550-2824" },
+  {
+    type: "email",
+    href: "mailto:grupovitz@gmail.com",
+    label: "grupovitz@gmail.com",
+  },
+  { type: "location", label: "Curitiba - PR" },
+];
+
+const SOCIAL_LINKS = [
+  {
+    icon: "fab fa-instagram",
+    href: "https://instagram.com/https://www.instagram.com/grupo.vitz?igsh=aTdkZHRmM25lOXl0",
+    className: "instagram",
+  },
+  {
+    icon: "fab fa-facebook-f",
+    href: "https://facebook.com/https://www.facebook.com/grupovitz",
+    className: "facebook",
+  },
+];
+
+const ICONS = {
+  phone: "📞",
+  email: "📧",
+  location: "📍",
+};
+
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* LOGO */}
+        {/* LOGO + DESCRIÇÃO */}
         <div className="footer-col">
           <img
             src="/images/logo_vitz-2.png"
-            alt="VITZ"
+            alt="VITZ Segurança"
             className="footer-logo"
           />
-
           <p>
             Protegemos o que é importante para você com tecnologia, estratégia e
             excelência operacional.
@@ -22,15 +56,11 @@ function Footer() {
         <div className="footer-col">
           <h4>Navegação</h4>
           <ul>
-            <li>
-              <a href="#sobre">Sobre</a>
-            </li>
-            <li>
-              <a href="#servicos">Serviços</a>
-            </li>
-            <li>
-              <a href="#contato">Contato</a>
-            </li>
+            {NAVIGATION_LINKS.map(({ href, label }) => (
+              <li key={href}>
+                <a href={href}>{label}</a>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -38,37 +68,46 @@ function Footer() {
         <div className="footer-col">
           <h4>Contato</h4>
           <ul>
-            <li>
-              <a href="tel:+5541995502824">📞 (41) 99550-2824</a>
-            </li>
-            <li>
-              <a href="mailto:grupovitz@gmail.com">📧 grupovitz@gmail.com</a>
-            </li>
-            <li>📍 Curitiba - PR</li>
+            {CONTACT_INFO.map(({ href, label, type }) => {
+              const content = (
+                <>
+                  <span className="icon">{ICONS[type]}</span>
+                  {label}
+                </>
+              );
+
+              return (
+                <li key={label}>
+                  {href ? <a href={href}>{content}</a> : <span>{content}</span>}
+                </li>
+              );
+            })}
           </ul>
         </div>
 
-        {/* REDES */}
+        {/* REDES SOCIAIS */}
         <div className="footer-col">
           <h4>Siga-nos</h4>
-
           <div className="socials">
-            <a href="#">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
+            {SOCIAL_LINKS.map(({ href, icon, className }) => (
+              <a
+                key={icon}
+                href={href}
+                className={className}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className={icon}></i>
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* LINHA FINAL */}
+      {/* RODAPÉ FINAL */}
       <div className="footer-bottom">
-        © 2026 VITZ Segurança e Facilities — Todos os direitos reservados
+        © {new Date().getFullYear()} VITZ Segurança e Facilities — Todos os
+        direitos reservados
       </div>
     </footer>
   );

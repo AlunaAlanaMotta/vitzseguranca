@@ -8,6 +8,8 @@ import Services from "./components/Services";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import useScrollReveal from "./hooks/useScrollReveal";
+import Review from "./components/Review";
+import ScrollToTop from "./hooks/ScrollToTop";
 
 function App() {
   useScrollReveal();
@@ -19,8 +21,10 @@ function App() {
       <MVV />
       <Services />
       <Differentials />
+      <Review />
       <Contact />
       <Footer />
+      <ScrollToTop />
       <WhatsAppButton />
     </>
   );
