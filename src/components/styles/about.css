@@ -155,4 +155,7 @@
   .sobre-cards {
     grid-template-columns: 1fr;
   }
+  .titulo {
+    text-align: center;
+  }
 }
