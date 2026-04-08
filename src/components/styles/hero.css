@@ -120,21 +120,42 @@
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .hero {
-    height: auto;
-    padding: 120px 20px 80px;
+    height: 100vh; /* ocupa toda a altura da tela */
+    min-height: 100vh;
+    padding: 0 20px; /* remove padding vertical excessivo */
+    background-attachment: scroll; /* evita bug no mobile */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* centraliza verticalmente */
+  }
 
-    background-attachment: scroll; /* importante */
+  .hero-content {
+    max-width: 90%;
+    text-align: center;
   }
 
   .hero h1 {
-    font-size: 1.7rem;
+    font-size: 2rem; /* título mais legível no celular */
+    line-height: 1.2;
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    margin: 15px 0 25px;
   }
 
   .btn-hero {
-    width: 100%;
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+    width: 16px;
+    height: 28px;
+  }
+
+  .scroll-indicator::after {
+    height: 5px;
   }
 }
