@@ -228,7 +228,7 @@ body {
   margin-bottom: 15px;
   padding-bottom: 20px;
   position: relative;
-  display: inline-block;
+  display: block;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: white;
